@@ -17,20 +17,37 @@
 
 		<script>
 
-			function search(term) {
-				
-			  $.ajax({
-			    url: "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search="+term,
-			    dataType: 'jsonp',
-			    success: function (data) {
-			      console.log(data[1][0])
-			      $("#main").append(
-			      	"<div class='result'>"+
-								"<h2>"+data[1][0]+"</h2>"+
-								"<p>"+data[2][0]+"</p>"+
+		var searchTerm;
+
+		function reset(){
+			$('#results').empty();
+			$("#searchAgainBtn").addClass("hidden");
+			$("#searchBar").removeClass('hidden');
+			$("#main").css("padding-top", "10em");
+			$("#searchInput").val("");
+
+		}
+
+		function search(term) {		
+		  $.ajax({
+		    url: "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search="+term,
+		    dataType: 'jsonp',
+		    success: function (data) {
+
+		    	// Display Results
+		      for (var i = 0; i < 10; i++) { 
+			      $("#results").append(
+			      	"<div class='result'>"+			
+								"<a href="+data[3][i]+">"+
+									"<h3>"+data[1][i]+"</h3>"+
+								"</a>"+
+								"<p>"+data[2][i]+"</p>"+
 							"</div>"
-			      	)
-			    }
+			      )
+					}
+			    $("#searchAgainBtn").removeClass("hidden");
+
+		    }
 			});
 			}
 
@@ -46,11 +63,17 @@
 
 				$('#searchBar').keypress(function(e){
 		      if(e.keyCode==13){
+		      	$("#searchBar").addClass('hidden');
+		      	$("#main").css("padding-top", "3em");
 	      		$('#linkadd').click();
-	    			var searchTerm = $("#searchInput").val();
+	    			searchTerm = $("#searchInput").val();
 						search(searchTerm);
 						}
 		    });
+
+				$('#searchAgainBtn').on('click', function() {
+					reset();
+				});
 
 
 			});
@@ -75,14 +98,20 @@
 					<i class="fa fa-search fa-2x" aria-hidden="true"></i>
 				</button>
 
-			</div>
-				
+			</div>				
 
 			<!-- Search Bar -->		
 			<div id="searchBar" class="hidden">				
 				<input id="searchInput" type="email" id="searchQuery" placeholder="Search">
 			</div>
+			
+			<div id="results">
+				<!-- results go here -->
+			</div>
 
+			<button id="searchAgainBtn" title="Search" type="button" class="hidden btn btn-custom">
+				<p>Search For Something Else</p>
+			</button>
 
 		</div>
 
