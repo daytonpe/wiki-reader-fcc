@@ -23,7 +23,13 @@
 			    url: "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search="+term,
 			    dataType: 'jsonp',
 			    success: function (data) {
-			      console.log(data)
+			      console.log(data[1][0])
+			      $("#main").append(
+			      	"<div class='result'>"+
+								"<h2>"+data[1][0]+"</h2>"+
+								"<p>"+data[2][0]+"</p>"+
+							"</div>"
+			      	)
 			    }
 			});
 			}
@@ -38,11 +44,13 @@
 				});
 
 
-				// Actually Search
-				$('#goBtn').on('click', function() {
-					var searchTerm = $("#searchInput").val();
-					search(searchTerm);
-				});
+				$('#searchBar').keypress(function(e){
+		      if(e.keyCode==13){
+	      		$('#linkadd').click();
+	    			var searchTerm = $("#searchInput").val();
+						search(searchTerm);
+						}
+		    });
 
 
 			});
@@ -74,12 +82,7 @@
 			<div id="searchBar" class="hidden">				
 				<input id="searchInput" type="email" id="searchQuery" placeholder="Search">
 			</div>
-			
-			<div>
-				<button id="goBtn" title="Search" type="button" class="hidden btn btn-custom">
-					<p>Go</p>
-				</button>
-			</div>
+
 
 		</div>
 

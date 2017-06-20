@@ -41,10 +41,15 @@ a:hover, a:focus, .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.
 }
 
 #searchBar{
-	max-width: 40%;
+	max-width: 35%;
 	margin-left: auto;
 	margin-right: auto;
-	padding-top: 
+}
+
+.result{
+	max-width: 70%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #buttonDiv{
