@@ -16,26 +16,34 @@
 	<body>
 
 		<script>
-			// function search() {
+
+			function search(term) {
 				
-			//   $.ajax( {
-			//     url: "https://en.wikipedia.org/wiki/" + "pizza",
-			//     data: queryData,
-			//     dataType: 'json',
-			//     type: 'POST',
-			//     headers: { 'Api-User-Agent': 'Example/1.0' },
-			//     success: function(data) {
-			//        // do something with data
-			//     }
-			// } );
-			// }
+			  $.ajax({
+			    url: "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search="+term,
+			    dataType: 'jsonp',
+			    success: function (data) {
+			      console.log(data)
+			    }
+			});
+			}
 
 			$(document).ready(function() {
 
+				// Choose to Search
 				$('#searchBtn').on('click', function() {
-					$("#title").html("<h2>poop</h2>");
-					console.log('red called');
+					$("#searchBar").removeClass('hidden');
+					$("#goBtn").removeClass('hidden');
+					$("#buttonDiv").addClass('hidden');
 				});
+
+
+				// Actually Search
+				$('#goBtn').on('click', function() {
+					var searchTerm = $("#searchInput").val();
+					search(searchTerm);
+				});
+
 
 			});
 
@@ -63,10 +71,16 @@
 				
 
 			<!-- Search Bar -->		
-			<div id="searchBar">				
-				<input type="email" id="searchQuery" placeholder="Search">
+			<div id="searchBar" class="hidden">				
+				<input id="searchInput" type="email" id="searchQuery" placeholder="Search">
 			</div>
 			
+			<div>
+				<button id="goBtn" title="Search" type="button" class="hidden btn btn-custom">
+					<p>Go</p>
+				</button>
+			</div>
+
 		</div>
 
 	</body>
