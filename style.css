@@ -1,6 +1,20 @@
-p, h1, h2, h3, h4, h5, h6{
+p, h1, h2, h3, h4, h5, h6, input{
 	color: black;
 	font-family: 'Poiret One', sans-serif;
+}
+
+h1{
+	margin-bottom: 20px;
+}
+
+a{
+	color: black;
+}
+
+a:hover, a:focus, .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
+	text-decoration: none;
+	outline: none;
+	outline-offset: none;
 }
 
 #main{
@@ -9,11 +23,42 @@ p, h1, h2, h3, h4, h5, h6{
 }
 
 .btn-custom{
-	background-color: white;
+/*	background-color: white;
 	border: 1px black solid;
-	border-radius: 33%;
+	border-radius: 33%;*/
+	background-color: white;
+	border: none;
+}
+
+.red{
+	color: red;
+	background-color: yellow;
+	text-decoration: underline;
 }
 
 #title{
-	max-width: 50%;
+	/*max-width: 50%;*/
+}
+
+#searchBar{
+	max-width: 40%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 
+}
+
+#buttonDiv{
+	margin-bottom: 20px;
+}
+
+input{
+	border-right: none;
+	border-left: none;
+	border-top: none;
+	border-bottom: 1px solid black;
+	font-size: 1.5em;
+}
+
+input:focus{
+	outline: none;
 }
