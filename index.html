@@ -22,6 +22,7 @@
 		function reset(){
 			$('#results').empty();
 			$("#searchAgainBtn").addClass("hidden");
+			$("#randomBtn2").addClass("hidden");
 			$("#searchBar").removeClass('hidden');
 			$("#main").css("padding-top", "10em");
 			$("#searchInput").val("");
@@ -46,6 +47,7 @@
 			      )
 					}
 			    $("#searchAgainBtn").removeClass("hidden");
+			    $("#randomBtn2").removeClass("hidden");
 
 		    }
 			});
@@ -112,6 +114,10 @@
 			<button id="searchAgainBtn" title="Search" type="button" class="hidden btn btn-custom">
 				<p>Search For Something Else</p>
 			</button>
+
+			<a id="randomBtn2" class="hidden" href="https://en.wikipedia.org/wiki/Special:Random">
+				<p>Nevermind, I wanted a random search actually.</p>
+			</a>
 
 		</div>
 

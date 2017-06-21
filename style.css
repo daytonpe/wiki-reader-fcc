@@ -47,6 +47,10 @@ a:hover, a:focus, .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.
 	margin-bottom: 30px;
 }
 
+i{
+	-webkit-text-stroke: 2px white;
+}
+
 input{
 	padding-left: 10px;
 	border-right: none;
@@ -61,7 +65,11 @@ input:focus{
 }
 
 #searchAgainBtn{
-	margin-bottom: 30px;
+	margin-bottom: 10px;
+}
+
+#randomBtn2{
+	margin-bottom: 60px;
 }
 
 .shiftUp{
